@@ -13,6 +13,7 @@ function CandidateDashboard({ user, onStartInterview, onLogout }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [selectedInterview, setSelectedInterview] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const candidateName =
     user?.displayName || user?.email?.split("@")[0] || "Candidate";
@@ -120,8 +121,26 @@ function CandidateDashboard({ user, onStartInterview, onLogout }) {
 
   return (
     <div className="min-h-screen bg-slate-950 text-white md:flex">
+      {/* Mobile Navbar */}
+<div className="flex items-center justify-between border-b border-white/10 bg-slate-950 p-4 md:hidden">
+  <h1 className="text-lg font-bold">🎙️ InterviewAI</h1>
+
+  <button
+    type="button"
+    onClick={() => setMenuOpen(!menuOpen)}
+    aria-label={menuOpen ? "Close menu" : "Open menu"}
+    aria-expanded={menuOpen}
+    className="rounded-lg border border-white/10 p-2 text-2xl hover:bg-white/10"
+  >
+    {menuOpen ? "✕" : "☰"}
+  </button>
+</div>
       {/* Left sidebar */}
-      <aside className="border-b border-white/10 p-6 md:min-h-screen md:w-64 md:border-b-0 md:border-r">
+      <aside
+  className={`${
+    menuOpen ? "block" : "hidden"
+  } border-b border-white/10 p-6 md:block md:min-h-screen md:w-64 md:shrink-0 md:border-b-0 md:border-r`}
+>
         <h1 className="text-xl font-bold">🎙️ InterviewAI</h1>
 
         <p className="mt-2 text-sm text-slate-400">
