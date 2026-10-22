@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
-const API_URL = "http://127.0.0.1:8000";
+const API_URL = "https://ai-voice-interview-kx0w.onrender.com";
 
 export default function VoiceInterview({
   settings = {},
