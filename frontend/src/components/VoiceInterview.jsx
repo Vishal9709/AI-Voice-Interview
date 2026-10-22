@@ -94,8 +94,6 @@ export default function VoiceInterview({
     }
 
     try {
-      listeningRef.current = true;
-      setStatus("listening");
       recognitionRef.current.start();
     } catch (err) {
       listeningRef.current = false;
@@ -134,7 +132,7 @@ export default function VoiceInterview({
       ) {
         startListening();
       }
-    }, 350);
+    }, 800);
   }, [startListening]);
 
   const speak = useCallback(
